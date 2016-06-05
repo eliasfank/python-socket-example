@@ -10,6 +10,7 @@ def usage():
 	sys.exit()
 	
 def sendFile(host, port, fp):
+	###Function that manages the sending of the file to the server
 	m = s.recv(1024)
 	if (m=="READY"):
 		print("Sending file to "+host+":"+str(port))

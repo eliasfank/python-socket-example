@@ -18,6 +18,8 @@ def calcValue(fileName):
 	return totalValue
 
 def get(con):
+	###Function that get the client file
+
     ###generate a unique name to the file
     fileName = "RecievedFiles/"+str(uuid.uuid4()) 
     try:
