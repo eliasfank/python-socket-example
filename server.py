@@ -21,6 +21,7 @@ def get(con):
 	###Function that get the client file
 
     ###generate a unique name to the file
+    ##The file will be save on RecievedFiles/
     fileName = "RecievedFiles/"+str(uuid.uuid4()) 
     try:
         ###Save the file on the server directory
@@ -56,7 +57,6 @@ def get(con):
 
 def conectado(con, cliente):
     ###Function that starts a new thread for the connection
-    print 'Conectado por', cliente
     msg = con.recv(1024)
     if (msg=="GETFILE"):
         print("Connection started with "+str(cliente))
@@ -87,6 +87,8 @@ print("Listening...")
 try:
     while True:
         con, cliente = tcp.accept()
+        ##A thread will be create for each connection
+        #so, more than one client can be attended
         thread.start_new_thread(conectado, tuple([con, cliente]))
 except KeyboardInterrupt:
     print("")
