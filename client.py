@@ -19,10 +19,11 @@ def sendFile(host, port, fp):
 			d = f.read(4096)
 			s.send(d)
 			while d != "":
-				time.sleep(0.1)
 				d = f.read(4096)
 				s.send(d)
-			#Signal the server that the file has reached the end
+			#Get a time for the socket not concatenate the last send with the next
+			#and signal the server that the file has reached the end
+			time.sleep(0.1)
 			s.send("--END--")
 			f.close()
 			l = s.recv(1024)

@@ -34,7 +34,6 @@ def get(con):
             if (d=="--END--"):
                 file.close()
                 break
-            #print(d)
             file.write(d)
         con.send("SUCCES")
         print("Succesfully downloaded file as "+fileName)
